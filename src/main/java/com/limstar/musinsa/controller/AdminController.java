@@ -3,7 +3,6 @@ package com.limstar.musinsa.controller;
 import com.limstar.musinsa.entity.Product;
 import com.limstar.musinsa.request.ProductRequest;
 import com.limstar.musinsa.service.ProductService;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
