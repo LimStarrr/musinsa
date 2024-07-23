@@ -49,7 +49,9 @@ Musinsa 서버 실행 명령어
 ```
 
 ## Command
-서버 api 호출 명령어 ( curl )
+서버 api 호출 명령어 ( curl ) 을 사용하여 호출하면 결과와 같이 결과값을 받을 수 있습니다.
+무신사 구현해야하는 API들의 설명과 호출 명령어 및 결과값을 아래와 같이 설명하였습니다.
+api 호출 확인 시 이용 부탁 드리겠습니다.
 
 1. 구현1) api - 카테고리 별 최저가격 브랜드와 상품 가격, 총액을 조회하는 API
    curl -X GET http://localhost:8080/musinsa/lowestprice
