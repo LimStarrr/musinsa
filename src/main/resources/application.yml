@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: musinsa
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: 'jdbc:h2:mem:musinsa'
+    username: musinsa
+    password: limstar
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  h2:
+    console:
+      enabled: true
+      path: /db
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+        show_sql: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      schema-locations:  classpath:/schema.sql
+      data-locations: classpath:/data.sql
+
