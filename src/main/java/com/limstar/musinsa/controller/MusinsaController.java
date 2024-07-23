@@ -34,7 +34,7 @@ public class MusinsaController
     }
 
     @Description("구현 2) - 단일 브랜드로 모든 카테고리 상품을 구매할 때 최저가격에 판매하는 브랜드와 카테고리의 상품가격, 총액을 조회하는 API")
-    @GetMapping("/lowwesttotalprice")
+    @GetMapping("/brandwithlowesttotalprice")
     public ResponseEntity<BrandWithLowestTotalPriceResponse> getBrandWithLowestTotalPrice() {
         BrandWithLowestTotalPriceResponse result = productsService.getBrandWithLowestTotalPrice();
         return  ResponseEntity.ok(result);

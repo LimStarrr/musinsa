@@ -1,10 +1,14 @@
 package com.limstar.musinsa.controller;
 
 import com.limstar.musinsa.entity.Product;
+import com.limstar.musinsa.request.ProductRequest;
 import com.limstar.musinsa.service.ProductService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 //4. 운영자는 새로운 브랜드를 등록하고, 모든 브랜드의 상품을 추가, 변경, 삭제할 수 있어야 합니다.
 
@@ -16,24 +20,25 @@ public class AdminController {
 
     @PostMapping("/product")
     @ResponseBody
-    public Product createBrand(Product product) {
-        return productsService.saveProduct(product);
+    public Product createProduct(@RequestBody ProductRequest product) {
+        return productsService.saveProduct(ProductRequest.valueOf(product));
     }
 
     @PutMapping("/product")
     @ResponseBody
-    public Product updateBrand(long id) {
-        return productsService.putProduct(id);
-    }
-    @GetMapping("/product")
-    @ResponseBody
-    public Product getBrand(long id) {
-        return productsService.findProductById(id);
+    public Product updateProduct(@RequestBody ProductRequest product) {
+        return productsService.putProduct(ProductRequest.valueOf(product));
     }
 
-    @DeleteMapping("/product")
+    @GetMapping("/product/{id}")
     @ResponseBody
-    public void deleteBrand(long id) {
+    public Product getProduct(@PathVariable Long id) {
+        return productsService.getProductById(id);
+    }
+
+    @DeleteMapping("/product/{id}")
+    @ResponseBody
+    public void deleteProduct(@PathVariable Long id) {
         productsService.deleteProduct(id);
     }
 }

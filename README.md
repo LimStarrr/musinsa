@@ -1,1 +1,71 @@
-# product
+# Musinsa Project
+기본 구성 및 설명
+Spring boot 3.3.1
+DB : H2 mem
+JAVA
+기본 URL : http://localhost:8080
+기본 설정 정보는 application.yml 에서 확인 가능
+runtime시 h2 schema.sql & data.sql 생성됨.
+
+## Requirements
+- [JDK 11 or higher](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- [Gradle 8.8 or higher](https://gradle.org/install/)
+
+## Clone the Repository
+
+```sh
+git clone https://github.com/LimStarrr/musinsa.git
+cd musinsa
+```
+
+## Build the Project
+
+### Linux / macOS
+클린 빌드 명령어
+```sh
+./gradlew clean
+```
+
+jar 파일 생성 빌드 명령어 ( 테스트 케이스 제외 )
+```sh
+./gradlew build -x test
+```
+
+## Run the Application
+Musinsa 서버 실행 명령어
+### Linux / macOS
+```sh
+./gradlew bootRun
+```
+
+서버 실행 완료 후 확인 가능 ( H2 Database )
+```H2
+1. http://localhost:8080/db 접속
+2. url: 'jdbc:h2:mem:musinsa'
+3. username: musinsa
+4. password: limstar
+입력하여 H2 DB 쿼리 가능
+```
+
+## Command
+서버 api 호출 명령어 ( curl )
+
+1. 구현1) api - 카테고리 별 최저가격 브랜드와 상품 가격, 총액을 조회하는 API
+   curl -X GET http://localhost:8080/musinsa/lowestprice
+   result> [{"브랜드":"D","카테고리":"상의","가격":10100},{"브랜드":"E","카테고리":"아우터","가격":5000},{"브랜드":"D","카테고리":"바지","가격":3000},{"브랜드":"A","카테고리":"스니커즈","가격":9000},{"브랜드":"G","카테고리":"스니커즈","가격":9000},{"브랜드":"A","카테고리":"가방","가격":2000},{"브랜드":"D","카테고리":"모자","가격":1500},{"브랜드":"I","카테고리":"양말","가격":1700},{"브랜드":"F","카테고리":"액세서리","가격":1900}]%
+2. 구현 2) - 단일 브랜드로 모든 카테고리 상품을 구매할 때 최저가격에 판매하는 브랜드와 카테고리의 상품가격, 총액을 조회하는 API
+   curl -X GET http://localhost:8080/musinsa/brandwithlowesttotalprice'
+   result> {"최저가":{"브랜드":"C","카테고리":[{"브랜드":"C","카테고리":"아우터","가격":6200},{"브랜드":"C","카테고리":"바지","가격":3300},{"브랜드":"C","카테고리":"스니커즈","가격":9200},{"브랜드":"C","카테고리":"가방","가격":2200},{"브랜드":"C","카테고리":"모자","가격":1900},{"브랜드":"C","카테고리":"양말","가격":2200},{"브랜드":"C","카테고리":"액세서리","가격":2100}],"총액":27100}}%
+3. 구현 3) - 카테고리 이름으로 최저, 최고 가격 브랜드와 상품 가격을 조회하는 API
+   curl -X GET http://localhost:8080/musinsa/{category}
+   ex command > curl -X GET http://localhost:8080/musinsa/상의
+   result> {"카테고리":"상의","최고가":[{"브랜드":"I","카테고리":"상의","가격":11400}],"최저가":[{"브랜드":"D","카테고리":"상의","가격":10100}]}%
+4. 운영자는 새로운 브랜드를 등록하고, 모든 브랜드의 상품을 추가, 변경, 삭제할 수 있어야 합니다.
+   1. POST 상품 등록 명령어 
+   curl -d '{"brand":"K", "category":"J", "price":10000}' -H "Content-Type: application/json" -X POST http://localhost:8080/admin/product
+   2. PUT 상품 업데이트 명령어
+   curl -d '{"id":"1", "brand":"L", "category":"슬리퍼", "price":10000}' -H "Content-Type: application/json" -X PUT http://localhost:8080/admin/product
+   3. GET 상품 ID로 조회
+   curl -X GET http://localhost:8080/admin/product/2
+   4. DELETE 상품 ID로 데이터 삭제
+   curl -X DELETE http://localhost:8080/admin/product/3
