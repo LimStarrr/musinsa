@@ -1,4 +1,8 @@
 # Musinsa Project
+안녕하세요. 
+무신사 지원자 임종완 입니다. 
+무신사 과제 개발내용 검토 부탁 드리겠습니다.
+
 기본 구성 및 설명
 Spring boot 3.3.1 JAVA
 DB : H2 mem
