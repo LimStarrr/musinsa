@@ -1,11 +1,12 @@
 # Musinsa Project
 기본 구성 및 설명
-Spring boot 3.3.1
+Spring boot 3.3.1 JAVA
 DB : H2 mem
-JAVA
-기본 URL : http://localhost:8080
+
+기본 접근 URL : http://localhost:8080
 기본 설정 정보는 application.yml 에서 확인 가능
-runtime시 h2 schema.sql & data.sql 생성됨.
+
+runtime시 h2 DB는 schema.sql & data.sql 스크립트로 기본 테이블 및 데이터 생성 됩니다.
 
 ## Requirements
 - [JDK 11 or higher](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
