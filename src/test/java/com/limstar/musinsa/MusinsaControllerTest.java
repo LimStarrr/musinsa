@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @DisplayName("api test case")
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ProductApiTest {
+public class MusinsaControllerTest {
     @Autowired
     protected MockMvc mockMvc;
 
