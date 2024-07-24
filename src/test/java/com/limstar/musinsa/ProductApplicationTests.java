@@ -9,6 +9,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -101,7 +104,15 @@ class ProductApplicationTests {
 	@Test
 	@DisplayName("삭제")
 	public void delete() {
+		Product product = Product.builder().brand("N").category("구두").price(12000).build();
 
+		Product savedProduct = productRepository.save(product);
+		Assertions.assertEquals("N", savedProduct.getBrand());
+
+		productRepository.delete(savedProduct);
+		Optional<List<Product>> findProduct = productRepository.findProductByBrand("N");
+
+		Assertions.assertTrue(findProduct.isPresent());
 	}
 
 	@Test
