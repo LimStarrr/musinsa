@@ -31,9 +31,9 @@ cd musinsa
 ./gradlew clean
 ```
 
-jar 파일 생성 빌드 명령어 ( 테스트 케이스 제외 )
+jar 파일 생성 빌드 명령어
 ```sh
-./gradlew build -x test
+./gradlew build
 ```
 
 ## Run the Application
