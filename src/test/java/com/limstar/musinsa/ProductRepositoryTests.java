@@ -5,7 +5,6 @@ import com.limstar.musinsa.repository.ProductRepository;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -17,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class ProductApplicationTests {
+class ProductRepositoryTests {
 	@Autowired
 	ProductRepository productRepository;
 
@@ -113,23 +112,6 @@ class ProductApplicationTests {
 		Optional<List<Product>> findProduct = productRepository.findProductByBrand("N");
 
 		Assertions.assertTrue(findProduct.isPresent());
-	}
-
-	@Test
-	@DisplayName("1번")
-	public void test1() {
-
-	}
-
-	@Test
-	@DisplayName("2번")
-	public void test2() {
-
-	}
-	@Test
-	@DisplayName("3번")
-	public void test3() {
-
 	}
 }
 
