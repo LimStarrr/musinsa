@@ -1,6 +1,6 @@
 package com.limstar.musinsa.service;
 
-import com.limstar.musinsa.entity.BrandWithLowestTotalPriceInterface;
+import com.limstar.musinsa.response.BrandWithLowestTotalPriceInterface;
 import com.limstar.musinsa.entity.Product;
 import com.limstar.musinsa.entity.LowestPriceByCategoryInterface;
 import com.limstar.musinsa.error.CustomException;

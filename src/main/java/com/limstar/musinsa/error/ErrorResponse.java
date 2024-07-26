@@ -1,21 +1,20 @@
-package com.limstar.musinsa.entity;
+package com.limstar.musinsa.error;
 
-import com.limstar.musinsa.error.ErrorCode;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.http.ResponseEntity;
 
 @Data
 @Builder
-public class ErrorResponseEntity {
+public class ErrorResponse {
     private int status;
     private String code;
     private String message;
 
-    public static ResponseEntity<ErrorResponseEntity> toResponseEntity(ErrorCode e){
+    public static ResponseEntity<ErrorResponse> toResponseEntity(ErrorCode e){
         return ResponseEntity
                 .status(e.getHttpStatus())
-                .body(ErrorResponseEntity.builder()
+                .body(ErrorResponse.builder()
                         .status(e.getHttpStatus().value())
                         .code(e.name())
                         .message(e.getMessage())

@@ -1,4 +1,4 @@
-package com.limstar.musinsa.entity;
+package com.limstar.musinsa.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

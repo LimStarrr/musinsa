@@ -1,6 +1,6 @@
 package com.limstar.musinsa.repository;
 
-import com.limstar.musinsa.entity.BrandWithLowestTotalPriceInterface;
+import com.limstar.musinsa.response.BrandWithLowestTotalPriceInterface;
 import com.limstar.musinsa.entity.Product;
 import com.limstar.musinsa.entity.LowestPriceByCategoryInterface;
 import org.springframework.data.jpa.repository.JpaRepository;
